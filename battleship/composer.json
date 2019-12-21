@@ -1,0 +1,12 @@
+{
+    "name": "academia/batallanaval",
+    "authors": [
+        {
+            "name": "ezequielpirrotta",
+            "email": "ezequiel.pir@outlook.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^8.5"
+    }
+}
