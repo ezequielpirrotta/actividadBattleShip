@@ -86,4 +86,4 @@ final class AhorcadoTest extends TestCase
         $batalla->turnoJugador2(9,9);
         $this->assertEquals(2,$batalla->cuantosTurnosPasaron());
     }
-}
+} 
