@@ -51,7 +51,7 @@ class Battleship{
     function colocarNaveJugador1($raw,$col){
         if($this->count1<$this->ships and $this->jugador1[$raw][$col]===0){
            $this->jugador1[$raw][$col]=1;
-           $this->count1; 
+           $this->count1+=1; 
         }
     }
     function colocarNaveJugador2($raw,$col){
@@ -60,20 +60,25 @@ class Battleship{
             $this->count2+=1;
         }
     }
+    
     function turnoJugador1($raw,$col){
-        
-        if($this->jugador2[$raw][$col]==1 and $this->turn==1){
-            $this->jugador2[$raw][$col]=2;
-            $this->turn=2;
+        if(!$this->estaVacioJugador1()){
+            if($this->jugador2[$raw][$col]==1 and $this->turn==1){
+                $this->jugador2[$raw][$col]=2;
+                $this->turn=2;
+            }
         }
+        
         $this->turnsQuantity+=1;
     }
     function turnoJugador2($raw,$col){
-        
-        if($this->jugador1[$raw][$col]==1 and $this->turn==2){
-            $this->jugador1[$raw][$col]=2;
-            $this->turn=1;
+        if(!$this->estaVacioJugador2()){
+            if($this->jugador1[$raw][$col]==1 and $this->turn==2){
+                $this->jugador1[$raw][$col]=2;
+                $this->turn=1;
+            }
         }
+        
         $this->turnsQuantity+=1;
     }
     function ganaJugador1(){
@@ -107,6 +112,33 @@ class Battleship{
     function cuantosTurnosPasaron(){
         return $this->turnsQuantity;
     }
-
+#       Agregados personales:
+#          Verifico que alguno de los jugadores
+#           no pueda hacer trampa(jugar sin ningun barco)
+#
+    function estaVacioJugador1(){
+        $contador=0;
+        for($i=0;$i<20;$i++){
+            for($j=0;$j<20;$j++){
+                if($this->jugador1[$i][$j]==1){
+                    $contador++;
+                }
+            }
+        }
+        return $contador==0;
+    }
+    function estaVacioJugador2(){
+        $contador=0;
+        for($i=0;$i<20;$i++){
+            for($j=0;$j<20;$j++){
+                if($this->jugador2[$i][$j]==1){
+                    $contador++;
+                }
+            }
+        }
+        return $contador==0;
+    }
+    
+    
 
 }

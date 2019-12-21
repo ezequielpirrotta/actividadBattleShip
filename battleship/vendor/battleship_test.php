@@ -49,6 +49,7 @@ final class AhorcadoTest extends TestCase
     function testTurnoJugador1(){
         $batalla=new Battleship(20,20,10);
         $batalla->colocarNaveJugador2(10,10);
+        $batalla->colocarNaveJUgador1(9,9);
         $batalla->turnoJugador1(10,10);
         $this->assertEquals(2,$batalla->mostrarJugador2()[10][10]);
         
@@ -85,5 +86,21 @@ final class AhorcadoTest extends TestCase
         $batalla->turnoJugador1(10,10);
         $batalla->turnoJugador2(9,9);
         $this->assertEquals(2,$batalla->cuantosTurnosPasaron());
+    }
+    function testJugarConTableroVacio(){
+        $batalla=new Battleship(20,20,10);
+        $batalla->colocarNaveJugador2(10,10);
+        $batalla->colocarNaveJugador2(5,5);
+        $batalla->turnoJugador1(5,5);
+        $contador=0;
+        for($i=0;$i<20;$i++){
+            for($j=0;$j<20;$j++){
+                $aux=$batalla->mostrarJugador2();
+                if($aux[$i][$j]==1){
+                    $contador++;
+                }
+            }
+        }
+        $this->assertEquals(2,$contador);  
     }
 } 
