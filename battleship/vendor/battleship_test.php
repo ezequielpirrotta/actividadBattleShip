@@ -12,10 +12,7 @@ final class AhorcadoTest extends TestCase
         $batalla=new Battleship(20,20,10);
         $this->assertTrue(!empty($batalla));
     }
-    function testBarcos(){
-        $batalla=new Battleship(20,20,10);
-        $this->assertEquals(10,$batalla->mostrarCantBarcos());
-    }
+    
     function testMostrarJugador1(){
         $batalla=new Battleship(20,20,10);
         $batalla->colocarNaveJugador1(10,10);
@@ -23,7 +20,6 @@ final class AhorcadoTest extends TestCase
         $this->assertEquals(1,$aux[10][10]);
     }
     function testColocar11BarcosJugador2(){
-        $contador=0;
         $batalla=new Battleship(20,20,10);
         $batalla->colocarNaveJugador2(10,10);
         $batalla->colocarNaveJugador2(3,16);
@@ -36,15 +32,7 @@ final class AhorcadoTest extends TestCase
         $batalla->colocarNaveJugador2(10,17);    
         $batalla->colocarNaveJugador2(11,13);
         $batalla->colocarNaveJugador2(12,13);
-        for($i=0;$i<20;$i++){
-            for($j=0;$j<20;$j++){
-                $aux=$batalla->mostrarJugador2();
-                if($aux[$i][$j]==1){
-                    $contador++;
-                }
-            }
-        }
-        $this->assertEquals(10,$contador);
+        $this->assertEquals(10,$batalla->mostrarCantBarcos(2));
     }
     function testTurnoJugador1(){
         $batalla=new Battleship(20,20,10);
@@ -52,7 +40,6 @@ final class AhorcadoTest extends TestCase
         $batalla->colocarNaveJUgador1(9,9);
         $batalla->turnoJugador1(10,10);
         $this->assertEquals(2,$batalla->mostrarJugador2()[10][10]);
-        
     }
     function testGanaJugador1(){
         $batalla=new Battleship(20,20,10);

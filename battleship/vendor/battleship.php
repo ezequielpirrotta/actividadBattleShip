@@ -34,13 +34,28 @@ class Battleship{
             $j=0;
             while($j<$cols){
                 $this->jugador2[$i][$j]=0;
-                $j++;
+                $j+=1;
             }
-            $i++;
+            $i+=1;
         }
     }
-    function mostrarCantBarcos(){
-        return $this->ships;
+    function mostrarCantBarcos($jugador){
+        $contador=0;
+        $aux;
+        if($jugador==1){
+            $aux=$this->mostrarJugador1();
+        }
+        else{
+            $aux=$this->mostrarJugador2();
+        }
+        for($i=0;$i<20;$i+=1){
+            for($j=0;$j<20;$j+=1){
+                if($aux[$i][$j]==1){
+                    $contador+=1;
+                }
+            }
+        }
+        return $contador;
     }
     function mostrarJugador1(){
         return $this->jugador1;
@@ -118,10 +133,10 @@ class Battleship{
 #
     function estaVacioJugador1(){
         $contador=0;
-        for($i=0;$i<20;$i++){
-            for($j=0;$j<20;$j++){
+        for($i=0;$i<20;$i+=1){
+            for($j=0;$j<20;$j+=1){
                 if($this->jugador1[$i][$j]==1){
-                    $contador++;
+                    $contador+=1;
                 }
             }
         }
@@ -129,10 +144,10 @@ class Battleship{
     }
     function estaVacioJugador2(){
         $contador=0;
-        for($i=0;$i<20;$i++){
-            for($j=0;$j<20;$j++){
+        for($i=0;$i<20;$i+=1){
+            for($j=0;$j<20;$j+=1){
                 if($this->jugador2[$i][$j]==1){
-                    $contador++;
+                    $contador+=1;
                 }
             }
         }
